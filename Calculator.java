@@ -25,6 +25,7 @@ public class Calculator {
 		cap.setCapability("platformName" , "ANDROID");
 		cap.setCapability("appPackage", "com.miui.calculator");
 		cap.setCapability("appActivity", "com.miui.calculator.cal.CalculatorActivity");
+		cap.setCapability("app", "C:\\Users\\Admin\\Desktop\\apk files\\com.miui.calculators.apk");
 		cap.setCapability("noReset", true);
 		driver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), cap);
 		

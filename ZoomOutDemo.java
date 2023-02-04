@@ -9,12 +9,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.MultiTouchAction;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class SwipDemo {
+public class ZoomOutDemo {
 	AndroidDriver<MobileElement> driver;
 	
 	@BeforeTest
@@ -27,12 +28,23 @@ public class SwipDemo {
 		dc.setCapability("noReset", true);
 		driver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), dc);
 	}
-	
-	@Test
-	public void swipeFromLeftToRight() {
-		TouchAction<?> ta = new TouchAction<>(driver);
-		ta.press(PointOption.point(296,694)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
-			.moveTo(PointOption.point(765,690)).release().perform();
-	}
 
+	@Test	
+	public void zoomOut() throws InterruptedException {
+		Thread.sleep(5000);
+		
+		//Swipe from right to left
+		TouchAction<?> ta1 = new TouchAction<>(driver);
+		ta1.press(PointOption.point(1056,825)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
+			.moveTo(PointOption.point(611,913)).release();
+		
+		//Swipe from left to right
+		TouchAction<?> ta2 = new TouchAction<>(driver);
+		ta2.press(PointOption.point(100,921)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000)))
+			.moveTo(PointOption.point(453,870)).release();
+		
+		//Perform together
+		MultiTouchAction mta = new MultiTouchAction(driver);
+		mta.add(ta1).add(ta2).perform();
+	}
 }

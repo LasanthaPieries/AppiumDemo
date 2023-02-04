@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,6 +24,7 @@ public class SpinnerDemo {
 		dc.setCapability("deviceName", "emulator-5554");
 		dc.setCapability("appPackage", "com.touchboarder.android.api.demos");
 		dc.setCapability("appActivity", "com.touchboarder.androidapidemos.MainActivity");
+		dc.setCapability("app", "C:\\Users\\Admin\\Desktop\\apk files\\APIDemos.apk");
 		dc.setCapability("noReset", true);
 		driver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), dc);
 	}
